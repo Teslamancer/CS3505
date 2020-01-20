@@ -32,18 +32,19 @@
  * Peter Jensen
  * January 4, 2020
  */
-#include<iostream>
 
-#ifndef PNTVEC_H//checks to avoid double-inclusion
+
+#ifndef PNTVEC_H
 #define PNTVEC_H
+#include<iostream>
 class pntvec
 {
   private:
     double x, y, z;
   public:
     pntvec (double x, double y, double z);
-    pntvec (const pntvec & other)//copy constructor
-    pntvec () //default constructor
+    pntvec (const pntvec & other);//copy constructor
+    pntvec (); //default constructor
 
     const pntvec operator+ (const pntvec & rhs) const;//for addition
     const pntvec operator- (const pntvec & rhs) const;//for subtraction
@@ -57,4 +58,5 @@ class pntvec
     const double get_x();
     const double get_y();
     const double get_z();
-}
+};
+#endif
