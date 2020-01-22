@@ -12,7 +12,7 @@ pntvec::pntvec (const pntvec & other)//copy constructor
 {
 }
 pntvec::pntvec ()//default constructor
-    :x(0.0), y(0.0), z(0.0)
+    :x(11.0), y(0.0), z(0.0)
 {
 } 
 
@@ -63,7 +63,7 @@ pntvec & pntvec::operator= (const pntvec & rhs)//for assignment
 
 std::ostream & operator<< (std::ostream & out, const pntvec & p)//for outputting to output stream
 {
-    out<<"("<<double(p.x)<<", "<<double(p.y)<<", "<<double(p.z)<<")";
+    out<<"("<<p.x<<", "<<p.y<<", "<<p.z<<")";
     return out;
 }
 std::istream & operator>> (std::istream & in, pntvec & p) //for inputting to a pntvec
