@@ -3,7 +3,7 @@
 
 
 
-pntvec::pntvec (double x_in, double y_in, double z_in)
+pntvec::pntvec (const double & x_in, const double & y_in, const double & z_in)
     :x(x_in), y(y_in), z(z_in)
 {    
 }
@@ -21,9 +21,9 @@ const pntvec pntvec::operator+ (const pntvec & rhs) const//for addition
     double result_x=0.0;
     double result_y=0.0;
     double result_z=0.0;
-    result_x = this->x + rhs.x;
-    result_y = this->y + rhs.y;
-    result_x = this->y + rhs.y;
+    result_x = this->x + rhs.x; //std::cout<<result_x<<std::endl;
+    result_y = this->y + rhs.y;//std::cout<<result_y<<std::endl;
+    result_z = this->z + rhs.z;//std::cout<<result_z<<std::endl;
     pntvec result(result_x,result_y,result_z);
     return result;
 }
@@ -38,12 +38,12 @@ const pntvec pntvec::operator- (const pntvec & rhs) const//for subtraction
     pntvec result(result_x,result_y,result_z);
     return result;
 }
-const pntvec pntvec::operator- () const//for negation
+const pntvec pntvec::operator- ()//for negation
 {
     pntvec result(*this);
     return result * -1.0;
 }
-const pntvec pntvec::operator* (const double rhs)//for scaling
+const pntvec pntvec::operator* (const double & rhs)//for scaling
 {
     double result_x=0.0;
     double result_y=0.0;
@@ -54,7 +54,7 @@ const pntvec pntvec::operator* (const double rhs)//for scaling
     pntvec result(result_x,result_y,result_z);
     return result;
 }
-pntvec & pntvec::operator= (const pntvec & rhs)//for assignment
+const pntvec & pntvec::operator= (const pntvec & rhs)//for assignment
 {
     this->x = rhs.x;
     this->y = rhs.y;
@@ -72,15 +72,15 @@ std::istream & operator>> (std::istream & in, pntvec & p) //for inputting to a p
     return in;
 }
 
-const double pntvec::get_x() const
+double pntvec::get_x() const
 {
     return this->x;
 }
-const double pntvec::get_y() const
+double pntvec::get_y() const
 {
     return this->y;
 }
-const double pntvec::get_z() const
+double pntvec::get_z() const
 {
     return this->z;
 }

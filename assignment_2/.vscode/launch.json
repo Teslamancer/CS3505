@@ -5,11 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Attach",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
-            "request": "attach",
+            "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "processId": "${command:pickProcess}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
                 {

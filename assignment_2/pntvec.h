@@ -42,21 +42,21 @@ class pntvec
   private:
     double x, y, z;
   public:
-    pntvec (double x, double y, double z);
+    pntvec (const double & x, const double & y, const double & z);
     pntvec (const pntvec & other);//copy constructor
     pntvec (); //default constructor
 
     const pntvec operator+ (const pntvec & rhs) const;//for addition
     const pntvec operator- (const pntvec & rhs) const;//for subtraction
-    const pntvec operator- () const;//for negation
-    const pntvec operator* (const double rhs);//for scaling
-    pntvec & operator= (const pntvec & rhs);//for assignment
+    const pntvec operator- ();//for negation
+    const pntvec operator* (const double & rhs);//for scaling
+    const pntvec & operator= (const pntvec & rhs);//for assignment
 
     friend std::ostream & operator<< (std::ostream & out, const pntvec & p);//for outputting to output stream
     friend std::istream & operator>> (std::istream & in, pntvec & p); //for inputting to a pntvec
 
-    const double get_x() const;
-    const double get_y() const;
-    const double get_z() const;
+    double get_x() const;
+    double get_y() const;
+    double get_z() const;
 };
 #endif
