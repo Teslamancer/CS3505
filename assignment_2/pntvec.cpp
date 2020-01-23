@@ -50,7 +50,7 @@ const pntvec pntvec::operator* (const double & rhs)//for scaling
     double result_z=0.0;
     result_x = this->x * rhs;
     result_y = this->y * rhs;
-    result_x = this->y * rhs;
+    result_z = this->z * rhs;
     pntvec result(result_x,result_y,result_z);
     return result;
 }
