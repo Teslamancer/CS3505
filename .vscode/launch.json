@@ -27,7 +27,7 @@
             "name": "DBG Assignment 2",
             "type": "cppdbg",
             "request": "launch",
-            "program": "assignment_2/test_pntvec",
+            "program": "test_pntvec",
             "args": [],
             "stopAtEntry": false,
             "cwd": "~/cs3505/assignment_2",

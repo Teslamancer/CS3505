@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make test_pntvec",
+            "type": "shell",
+            "command": "make test_pntvec",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "gcc compile test_pntvec",
+            "type": "shell",
+            "command": "g++ test_pntvec.cpp pntvec.cpp -o test_pntvec",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        
+    ]
+}
