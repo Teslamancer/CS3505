@@ -100,7 +100,20 @@ int main()
         }
     }
     //TODO: Tests a = -b
-
+    {
+        //delete(&b);
+        pntvec b(1.0,1.0,1.0);
+        //delete(&c);        
+        pntvec a = -b;
+        if(a.get_x() != -1.0 | a.get_y() != -1.0 | a.get_z() != -1.0)
+        {
+            // std::cout<<a.get_x()<<std::endl;
+            // std::cout<<a.get_y()<<std::endl;
+            // std::cout<<a.get_z()<<std::endl;
+            std::cout<<"Error in pntvec::operator- ()"<<std::endl;
+            return -1;
+        }
+    }
     //TODO: Tests d = a.distance_to(b);
 
     //TODO: Tests out << a;
