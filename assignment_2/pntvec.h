@@ -37,6 +37,7 @@
 #ifndef PNTVEC_H
 #define PNTVEC_H
 #include<iostream>
+#include<cmath>
 class pntvec
 {
   private:
@@ -51,6 +52,8 @@ class pntvec
     const pntvec operator- ();//for negation
     const pntvec operator* (const double & rhs);//for scaling
     const pntvec & operator= (const pntvec & rhs);//for assignment
+
+    double distance_to(const pntvec & other) const; //for computing distance between two points
 
     friend std::ostream & operator<< (std::ostream & out, const pntvec & p);//for outputting to output stream
     friend std::istream & operator>> (std::istream & in, pntvec & p); //for inputting to a pntvec

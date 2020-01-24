@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cmath>
 #include"pntvec.h"
 
 
@@ -70,6 +71,11 @@ std::istream & operator>> (std::istream & in, pntvec & p) //for inputting to a p
 {
     in>>p.x>>p.y>>p.z;
     return in;
+}
+
+double pntvec::distance_to(const pntvec & other) const
+{
+    return std::sqrt((other.x-this->x)*(other.x-this->x)+(other.y-this->y)*(other.y-this->y)+(other.z-this->z)*(other.z-this->z));
 }
 
 double pntvec::get_x() const
