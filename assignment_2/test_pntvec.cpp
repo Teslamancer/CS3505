@@ -1,5 +1,6 @@
 #include"pntvec.h"
 #include<iostream>
+#include<sstream>
 
 int main()
 {//tests
@@ -95,7 +96,7 @@ int main()
             // std::cout<<a.get_x()<<std::endl;
             // std::cout<<a.get_y()<<std::endl;
             // std::cout<<a.get_z()<<std::endl;
-            std::cout<<"Error in pntvec::operator* (const double & rhs)"<<std::endl;
+            std::cout<<"Error in pntvec::operator* (const double & rhs)."<<std::endl;
             return -1;
         }
     }
@@ -110,23 +111,44 @@ int main()
             // std::cout<<a.get_x()<<std::endl;
             // std::cout<<a.get_y()<<std::endl;
             // std::cout<<a.get_z()<<std::endl;
-            std::cout<<"Error in pntvec::operator- ()"<<std::endl;
+            std::cout<<"Error in pntvec::operator- ()."<<std::endl;
             return -1;
         }
     }
-    //TODO: Tests d = a.distance_to(b);
+    //Tests d = a.distance_to(b);
     {
         pntvec a(1.0,1.0,1.0);
         pntvec b(a);
         if(a.distance_to(b)!=0.0)
         {
-            std::cout<<"Error in pntvec::distance_to(const pntvec & other)"<<std::endl;
+            std::cout<<"Error in pntvec::distance_to(const pntvec & other)."<<std::endl;
             return -1;
         }
     }
-    //TODO: Tests out << a;
-    
-    //TODO: Tests in >> a;
+    //Tests out << a;
+    {
+        pntvec p;
+        std::stringstream pnt("");
+        pnt<<p;
+
+        if(pnt.str() !="(0, 0, 0)")
+        {
+            std::cout<<"Error in operator<< (std::ostream & out, const pntvec & p)."<<std::endl;
+            return -1;
+        }
+    }
+    //Tests in >> a;
+    {
+        pntvec a;
+        std::stringstream pnt_in("1.0 2.0 3.0");
+        pnt_in >> a;
+        if(a.get_x() != 1.0 | a.get_y() != 2.0 | a.get_z() != 3.0)
+        {
+            std::cout<<"Error in operator>> (std::istream & in, pntvec & p)."<<std::endl;            
+            return -1;
+        }
+
+    }
     std::cout<<"No error."<<std::endl;
     return 0;
 }

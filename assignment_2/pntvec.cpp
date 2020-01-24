@@ -64,7 +64,13 @@ const pntvec & pntvec::operator= (const pntvec & rhs)//for assignment
 
 std::ostream & operator<< (std::ostream & out, const pntvec & p)//for outputting to output stream
 {
-    out<<"("<<double(p.x)<<", "<<double(p.y)<<", "<<double(p.z)<<")";
+    out<<"(";
+    out<<p.x;
+    out<<", ";
+    out<<p.y;
+    out<<", ";
+    out<<p.z;
+    out<<")";
     return out;
 }
 std::istream & operator>> (std::istream & in, pntvec & p) //for inputting to a pntvec
