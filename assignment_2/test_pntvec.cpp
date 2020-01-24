@@ -83,7 +83,7 @@ int main()
         }
 
     }
-    //TODO: Tests a = b * d
+    //Tests a = b * d
     {
         //delete(&b);
         pntvec b(1.0,1.0,1.0);
@@ -99,7 +99,7 @@ int main()
             return -1;
         }
     }
-    //TODO: Tests a = -b
+    //Tests a = -b
     {
         //delete(&b);
         pntvec b(1.0,1.0,1.0);
@@ -115,9 +115,17 @@ int main()
         }
     }
     //TODO: Tests d = a.distance_to(b);
-
+    {
+        pntvec a(1.0,1.0,1.0);
+        pntvec b(a);
+        if(a.distance_to(b)!=0.0)
+        {
+            std::cout<<"Error in pntvec::distance_to(const pntvec & other)"<<std::endl;
+            return -1;
+        }
+    }
     //TODO: Tests out << a;
-
+    
     //TODO: Tests in >> a;
     std::cout<<"No error."<<std::endl;
     return 0;
