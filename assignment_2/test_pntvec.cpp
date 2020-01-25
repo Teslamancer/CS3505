@@ -82,6 +82,13 @@ int main()
             std::cout<<"Error in pntvec::operator- (const pntvec & rhs)."<<std::endl;
             return -1;
         }
+        pntvec d(-1.0,-1.0,-1.0);
+        pntvec e = a - d;
+        if(e.get_x() != 1.0 | e.get_y() != 1.0 | e.get_z() != 1.0)
+        {
+            std::cout<<"Error in pntvec::operator- (const pntvec & rhs)."<<std::endl;
+            return -1;
+        }
 
     }
     //Tests a = b * d
@@ -103,10 +110,10 @@ int main()
     //Tests a = -b
     {
         //delete(&b);
-        pntvec b(1.0,1.0,1.0);
+        pntvec b(1.0,2.0,3.0);
         //delete(&c);        
         pntvec a = -b;
-        if(a.get_x() != -1.0 | a.get_y() != -1.0 | a.get_z() != -1.0)
+        if(a.get_x() != -1.0 | a.get_y() != -2.0 | a.get_z() != -3.0)
         {
             // std::cout<<a.get_x()<<std::endl;
             // std::cout<<a.get_y()<<std::endl;

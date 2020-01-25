@@ -30,19 +30,11 @@ const pntvec pntvec::operator+ (const pntvec & rhs) const//for addition
 }
 const pntvec pntvec::operator- (const pntvec & rhs) const//for subtraction
 {
-    double result_x=0.0;
-    double result_y=0.0;
-    double result_z=0.0;
-    result_x = this->x - rhs.x;
-    result_y = this->y - rhs.y;
-    result_x = this->y - rhs.y;
-    pntvec result(result_x,result_y,result_z);
-    return result;
+    return pntvec(x-rhs.x,y-rhs.y,z-rhs.z);
 }
 const pntvec pntvec::operator- ()//for negation
-{
-    pntvec result(*this);
-    return result * -1.0;
+{    
+    return pntvec(-this->x,-this->y,-this->z);
 }
 const pntvec pntvec::operator* (const double & rhs)//for scaling
 {
