@@ -55,10 +55,16 @@ int main()
         pntvec b;
         pntvec c(1.0, 2.0, 3.0);
         pntvec a = b + c;
+        pntvec d(-1.0,-1.0,-1.0);
+        pntvec e = a + d;
         if(a.get_x() != 1.0 | a.get_y() != 2.0 | a.get_z() != 3.0)
         {
-            std::cout<<"Error in pntvec::operator+ (const pntvec & rhs)."<<std::endl;            
-            return -1;
+            if(e.get_x() != 0.0 | e.get_y() != 1.0 | e.get_z() != 2.0)
+            {
+
+                std::cout<<"Error in pntvec::operator+ (const pntvec & rhs)."<<std::endl;            
+                return -1;
+            }
         }
 
     }
