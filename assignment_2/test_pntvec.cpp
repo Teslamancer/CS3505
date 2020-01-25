@@ -3,10 +3,8 @@
 #include<sstream>
 
 int main()
-{//tests
-    //Tests pntvec a()
-    // try
-    // {
+{//tests are in their own scope to re-use memory and variable names
+    
     {
         pntvec p;
         if(p.get_x() !=0.0 | p.get_y() !=0.0 | p.get_z() != 0.0)
@@ -16,12 +14,7 @@ int main()
             //throw;
         }
     }
-    //}
-    // catch(...)
-    // {
-    //     std::cout<<"Error in pntvec()."<<std::endl;
-    //     return -1;
-    // }
+    
     //Tests pntvec a(1.0,2.0,3.0)
     {
         pntvec p(1.0,2.0,3.0);
@@ -156,6 +149,7 @@ int main()
         }
 
     }
+    //If all tests pass, returns no error
     std::cout<<"No error."<<std::endl;
     return 0;
 }
