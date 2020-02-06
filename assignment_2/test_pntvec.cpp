@@ -86,21 +86,21 @@ int main()
             std::cout<<"Error in pntvec::operator- (const pntvec & rhs)."<<std::endl;
             return -1;
         }
-        // pntvec d(-1.0,-1.0,-1.0);
-        // pntvec e = a - d;
-        // if(e.get_x() != 1.0 | e.get_y() != 1.0 | e.get_z() != 1.0)
-        // {
-        //     std::cout<<"Error in pntvec::operator- (const pntvec & rhs)."<<std::endl;
-        //     return -1;
-        // }
-        // pntvec f(0.5,0.5,0.5);
-        // pntvec g(0.4,0.4,0.4);
-        // pntvec h = f - g;
-        // if(h.get_x() != 0.1 | h.get_y() != 0.1 | h.get_z() != 0.1)
-        // {
-        //     std::cout<<"Error in pntvec::operator- (const pntvec & rhs)."<<std::endl;
-        //     return -1;
-        // }
+        pntvec d(-1.0,-1.0,-1.0);
+        pntvec e = a - d;
+        if(e.get_x() != 1.0 | e.get_y() != 1.0 | e.get_z() != 1.0)
+        {
+            std::cout<<"Error in pntvec::operator- (const pntvec & rhs)."<<std::endl;
+            return -1;
+        }
+        pntvec f(0.5,0.5,0.5);
+        pntvec g(0.4,0.4,0.4);
+        pntvec h = f - g;
+        if(h.get_x() != 0.1 | h.get_y() != 0.1 | h.get_z() != 0.1)
+        {
+            std::cout<<"Error in pntvec::operator- (const pntvec & rhs)."<<std::endl;
+            return -1;
+        }
 
     }
     //Tests a = b * d
