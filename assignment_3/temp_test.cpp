@@ -13,7 +13,7 @@ using namespace std;
 
 int main ()
 {
-    cs3505::string_set set();
+    cs3505::string_set set(10);
     set.add("a");
     set.add("c");
     set.add("b");

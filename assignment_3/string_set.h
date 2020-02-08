@@ -51,7 +51,7 @@ namespace cs3505
       void debug_output() const;
 
     private:
-
+	  
       // You may add any private helper functions that you like.
       
 

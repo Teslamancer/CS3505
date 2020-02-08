@@ -35,16 +35,17 @@ cs3505::node::node(const node & other)
 }
 
 cs3505::node::node()
-    :data(NULL)
+    :data("")
 {
 
 }
 
 cs3505::node::~node()
 {
-    delete this->data;
-    delete this->droplist;
-
+	for (int i = 0; i < this->droplist.capacity(); i++) 
+	{
+		this->droplist[i] = NULL;
+	}
 }
 
 const std::string cs3505::node::get_data() const

@@ -24,7 +24,7 @@ namespace cs3505
     *   width of the next pointers in the drop list nodes.
     */
   string_set::string_set(int max_next_width)
-    :max_next_width(max_next_width),head(new node)
+    :max_next_width(max_next_width),head(new node), size(0)
   {
     for(int i=0;i<max_next_width;i++)
     {
@@ -38,13 +38,18 @@ namespace cs3505
     *   another set.
     */
   string_set::string_set (const string_set & other)
-    :max_next_width(other.max_next_width)
+    :max_next_width(other.max_next_width), size(other.size), head(new node())
   {
-    node * current = other.head->droplist[0];
+	  
+	  for (int i = 0; i < max_next_width; i++)
+	  {
+		  this->head->droplist.push_back(NULL);
+	  }
+    node* current = other.head->droplist[0];
     while(current != NULL)
     {
-      this.add(current.data);
-      current = current.droplist[0];
+      this->add(current->data);
+      current = current->droplist[0];
     }
   }
 
@@ -54,14 +59,14 @@ namespace cs3505
     */
   string_set::~string_set()
   {
-    node * current = head->droplist[0];
-    node * next = head->droplist[0];
+	  /*node* current = head;
+	  node* next = head;
     while(current != NULL)
     {
-      next = current.droplist[0];
-      delete *current;
+      next = current->droplist[0];
+      delete (*current);
       current = next;
-    }
+    }*/
   }
 
   /**
@@ -69,33 +74,38 @@ namespace cs3505
    */
   void string_set::add(const std::string & target)
   {
-    std::vector<node*> previous(this.max_next_width);
-    node * current = this.head;
-    for(int i=this.max_next_width-1;i>=0;i--)
+    std::vector<node*> previous(this->max_next_width);
+    node * current = this->head;
+    for(int i=this->max_next_width-1;i>=0;i--)
     {
-      if(i==0)
-      {
-        if(current->droplist[0] == nullptr){
-          
-        }
-        while(current->droplist[0].data)
-      }
-      if(current->droplist[i]* ==  nullptr ||current->droplist[i].data > target)
-      {
-        previous[i]=current->droplist[i];
-        continue;
-      }
-      else
-      {
-        if(current->droplist[i].data == target)
-          break;
-        else
-        {
-          previous[i]=current->droplist[i];
-          current = current->droplist[i];
-        }
-      }
+		if (i == 0) 
+		{
+			while (current->droplist[0] != NULL && current->droplist[0]->data < (target))
+			{
+				previous[0] = current;
+				current = current->droplist[0];
+			}
+			int nodeSize = 1;
+			while (rand() % 2 == 0)
+				nodeSize++;
+			node targetNode = new node(*target);
+			for (int x = 0; x < nodeSize;x++) 
+			{
+
+			}
+		}
+		
+		if (current->droplist[i] == NULL || current->droplist[i]->data > target)
+		{
+			previous[i] = current;
+		}
+		else
+		{
+			current = current->droplist[i];
+			i++;
+		}
     }
+
   }
   /**
     * Prints each node with the values stored in its pointers
@@ -106,12 +116,12 @@ namespace cs3505
       std::cout<<"DATA"<<'\t'<<std::endl;
       while(current != NULL)
       {
-        std::cout<<current.data<<'\t';
-        for(int i=0;i<this.max_next_width;i++)
+        std::cout<<current->data<<'\t';
+        for(int i=0;i<this->max_next_width;i++)
         {
-          std::cout<<current.droplist[i]->data<<'\t';
+          std::cout<<current->droplist[i]->data<<'\t';
         }
-        std::cout<<endl;
+        std::cout<<std::endl;
       }
   }
   // Additional public and private helper function definitions needed
