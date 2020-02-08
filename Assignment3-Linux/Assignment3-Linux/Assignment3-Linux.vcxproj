@@ -76,8 +76,12 @@
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="node.cpp" />
+    <ClCompile Include="string_set.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="node.h" />
+    <ClInclude Include="string_set.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
