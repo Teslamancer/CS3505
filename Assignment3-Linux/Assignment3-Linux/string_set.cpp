@@ -53,7 +53,7 @@ namespace cs3505
         }
     }
 
-    /*const int string_set::new_count() const
+    const int string_set::new_count() const
     {
         return node::newCount;
     }
@@ -61,7 +61,7 @@ namespace cs3505
     const int string_set::del_count() const
     {
         return node::delCount;
-    }*/
+    }
     /** Destructor:  release any memory allocated
       *   for this object.
       */
@@ -156,7 +156,7 @@ namespace cs3505
             }
             delete(toRemove);
         }
-
+        this->size--;
     }
     /*
         This helper function generates a previous vector in order to find the insertion or deletion point of a target string.
