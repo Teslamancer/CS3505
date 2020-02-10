@@ -38,7 +38,7 @@ namespace cs3505
       *   another set.
       */
     string_set::string_set(const string_set& other)
-        :max_next_width(other.max_next_width), size(other.size), head(new node())
+        :max_next_width(other.max_next_width), size(0), head(new node())
     {
 
         for (int i = 0; i < max_next_width; i++)
@@ -53,26 +53,115 @@ namespace cs3505
         }
     }
 
+    /*const int string_set::new_count() const
+    {
+        return node::newCount;
+    }
 
+    const int string_set::del_count() const
+    {
+        return node::delCount;
+    }*/
     /** Destructor:  release any memory allocated
       *   for this object.
       */
     string_set::~string_set()
     {
-        /*node* current = head;
+        node* current = head;
         node* next = head;
       while(current != NULL)
       {
+        //if(current->droplist[0] != NULL)
         next = current->droplist[0];
-        delete (*current);
+        delete (current);
         current = next;
-      }*/
+      }
     }
-
+    /*
+        This returns a vector of all the elements of the set in order
+    */
+    std::vector<std::string> string_set::get_elements()
+    {
+        std::vector<std::string> toReturn;
+        node* current = this->head->droplist[0];
+        while (current != NULL)
+        {
+            toReturn.push_back(current->data);
+            current = current->droplist[0];
+        }
+        return toReturn;
+    }
+    /*
+        Returns size of set as an int
+    */
+    int  string_set::get_size() const
+    {
+        return this->size;
+    }
     /**
      * adds the string element to the set in sorted order
      */
     void string_set::add(const std::string& target)
+    {
+        int nodeSize = 1;
+        std::vector<node*> previous = generate_previous(target);
+        if (previous[0]->droplist[0] != NULL && previous[0]->droplist[0]->data == target)
+            return;
+        while (rand() % 2 == 0 && nodeSize <= max_next_width)
+            nodeSize++;
+        node* targetNode = new node(target);
+        targetNode->droplist.resize(nodeSize);
+        for (int x = nodeSize - 1; x >= 0; x--)
+        {
+            node* temp = previous[x]->droplist[x];
+            targetNode->droplist[x] = temp;
+            previous[x]->droplist[x] = targetNode;
+        }
+        this->size++;
+    }
+
+    /*
+        returns a bool indicating whether or not the target string exists in the set
+    */
+    bool string_set::contains(const std::string& target) const
+    {
+        std::vector<node*> previous = generate_previous(target);
+        if (previous[0]->droplist[0] != NULL && previous[0]->droplist[0]->data == target)
+            return true;
+        else
+            return false;
+    }
+    /*
+        copies the elements of the rhs side to the lhs set
+    */
+    string_set& string_set::operator= (const string_set& rhs)
+    {
+        string_set toReturn(rhs);
+        return toReturn;
+    }
+    /*
+        This removes the target element from the set if it exists
+    */
+    void string_set::remove(const std::string& target)
+    {
+        std::vector<node*> previous = generate_previous(target);
+        if (previous[0]->droplist[0] == NULL || previous[0]->droplist[0]->data != target)
+            return;
+        else
+        {
+            node* toRemove = previous[0]->droplist[0];
+            for (int i = toRemove->droplist.size() - 1; i >= 0; i--)
+            {
+                previous[i]->droplist[i] = toRemove->droplist[i];
+            }
+            delete(toRemove);
+        }
+
+    }
+    /*
+        This helper function generates a previous vector in order to find the insertion or deletion point of a target string.
+    */
+    const std::vector<node*> string_set::generate_previous(const std::string& target) const
     {
         std::vector<node*> previous(this->max_next_width);
         node* current = this->head;
@@ -86,21 +175,10 @@ namespace cs3505
                     current = current->droplist[0];
                     previous[0] = current;
                 }
-                int nodeSize = 1;
-                while (rand() % 2 == 0 && nodeSize <= max_next_width)
-                    nodeSize++;
-                node* targetNode = new node(target);
-                targetNode->droplist.resize(nodeSize);
-                for (int x = nodeSize - 1; x >= 0; x--)
-                {
-                    node* temp = previous[x]->droplist[x];
-                    targetNode->droplist[x] = temp;
-                    previous[x]->droplist[x] = targetNode;
-                }
-                break;
+                return previous;
             }
 
-            if (current->droplist[i] == NULL || current->droplist[i]->data > target)
+            if (current->droplist[i] == NULL || current->droplist[i]->data >= target)
             {
                 previous[i] = current;
             }
@@ -110,16 +188,11 @@ namespace cs3505
                 i++;
             }
         }
-
-    }
-    const std::vector<node*> string_set::generate_previous(const std::string& target) const
-    {
-
     }
     /**
       * Prints each node with the values stored in its pointers
       */
-    void string_set::debug_output() const
+    /*void string_set::debug_output() const
     {
         node* current = head;
         std::cout << "DATA" << '\t' <<"POINTS TO"<<std::endl;
@@ -134,7 +207,7 @@ namespace cs3505
             std::cout << std::endl;
             current = current->droplist[0];
         }
-    }
+    }*/
     // Additional public and private helper function definitions needed
 
 }

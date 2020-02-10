@@ -47,11 +47,14 @@ namespace cs3505
         string_set& operator= (const string_set& rhs);   // Not const - modifies this object
 
         std::vector<std::string> get_elements();           // Returns all the elements in this string_set,
-                                                           // in ascending order.  
-        void debug_output() const;
+                                                           // in ascending order.
+        //void debug_output() const;
+        //const int new_count() const;
+        //const int del_count() const;
 
     private:
         const std::vector<node*> generate_previous(const std::string& target) const;
+        
         // You may add any private helper functions that you like.
 
 

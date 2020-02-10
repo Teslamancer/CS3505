@@ -26,6 +26,8 @@ namespace cs3505
     {
         friend class string_set;   // This allows functions in string_set to access
                        //   private data (and constructor) within this class.
+        //static int newCount;
+        //static int delCount;
     public:
         node(const std::string s);//creates node with provided data
         node(const node& other);//copy constructor
@@ -33,11 +35,12 @@ namespace cs3505
         ~node();//node destructor
 
 
-        const std::string get_data() const;//gets the string data of the node
+        //const std::string get_data() const;//gets the string data of the node
 
     private:
         std::string data;
         std::vector<node*> droplist;
+        
         // Students must decide what functions and variables are needed here.
 
     };

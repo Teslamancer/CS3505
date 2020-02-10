@@ -20,24 +20,27 @@
  /*******************************************************
   * node member function definitions
   ***************************************************** */
+//int cs3505::node::newCount = 0;
+//int cs3505::node::delCount = 0;
 
   // Students will decide how to implement the constructor, destructor, and
   //   any helper methods.
 cs3505::node::node(std::string s)
     :data(s)
 {
+    //newCount++;
 }
 
 cs3505::node::node(const node& other)
     : data(other.data), droplist(other.droplist)
 {
-
+    //newCount++;
 }
 
 cs3505::node::node()
     : data()
 {
-
+    //newCount++;
 }
 
 cs3505::node::~node()
@@ -46,10 +49,11 @@ cs3505::node::~node()
     {
         this->droplist[i] = NULL;
     }
+    //delCount++;
 }
 
-const std::string cs3505::node::get_data() const
-{
-    return this->data;
-}
+//const std::string cs3505::node::get_data() const
+//{
+//    return this->data;
+//}
 
