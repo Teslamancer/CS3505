@@ -1,8 +1,9 @@
+
 /* This node class is used to build drop lists for the
  * string_set class.
  *
- * Peter Jensen
- * January 28, 2020
+ * Author: Hunter Schmidt
+ * February 10, 2020
  */
 
 #ifndef NODE_H
@@ -10,7 +11,6 @@
 
 #include <vector>
 #include <string>
-
 namespace cs3505
 {
     // We're in a namespace - declarations will be within this CS3505 namespace.
@@ -18,7 +18,7 @@ namespace cs3505
 
     /* Node class for holding elements. */
 
-    /* Note:  Do not alter the next line of code.  My tester will re-write
+    /* Note:  Do not alter the next line of code.  The tester will re-write
        the 'class node'  to 'class node : private auditor' so that it inherits
        from my auditing class (harmlessly). */
 
@@ -40,7 +40,7 @@ namespace cs3505
     private:
         std::string data;
         std::vector<node*> droplist;
-        
+
         // Students must decide what functions and variables are needed here.
 
     };

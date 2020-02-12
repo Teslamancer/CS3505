@@ -7,12 +7,13 @@
  * O(lg size) on average.  The operator= and get_elements
  * functions are O(size).
  *
- * Peter Jensen
- * January 28, 2020
+ * Author: Hunter Schmidt
+ * February 10, 2020
  */
 
 #include "string_set.h"
 #include <iostream>  // For debugging, if needed.
+#include<stdlib.h>
 
 namespace cs3505
 {
@@ -24,7 +25,7 @@ namespace cs3505
        *   width of the next pointers in the drop list nodes.
        */
     string_set::string_set(int max_next_width)
-        :max_next_width(max_next_width), head(new node), size(0)
+        :max_next_width(max_next_width), head(new node()), size(0)
     {
         for (int i = 0; i < max_next_width; i++)
         {
@@ -53,12 +54,12 @@ namespace cs3505
         }
     }
 
-    const int string_set::new_count() const
+    int string_set::new_count()
     {
         return node::newCount;
     }
 
-    const int string_set::del_count() const
+    int string_set::del_count()
     {
         return node::delCount;
     }
@@ -69,13 +70,13 @@ namespace cs3505
     {
         node* current = head;
         node* next = head;
-      while(current != NULL)
-      {
-        //if(current->droplist[0] != NULL)
-        next = current->droplist[0];
-        delete (current);
-        current = next;
-      }
+        while (current != NULL)
+        {
+            //if(current->droplist[0] != NULL)
+            next = current->droplist[0];
+            delete (current);
+            current = next;
+        }
     }
     /*
         This returns a vector of all the elements of the set in order
@@ -136,8 +137,12 @@ namespace cs3505
     */
     string_set& string_set::operator= (const string_set& rhs)
     {
-        string_set toReturn(rhs);
-        return toReturn;
+        if (this != &rhs)
+        {
+            string_set toReturn(rhs);
+            return toReturn;
+
+        }
     }
     /*
         This removes the target element from the set if it exists
@@ -145,9 +150,7 @@ namespace cs3505
     void string_set::remove(const std::string& target)
     {
         std::vector<node*> previous = generate_previous(target);
-        if (previous[0]->droplist[0] == NULL || previous[0]->droplist[0]->data != target)
-            return;
-        else
+        if (previous[0]->droplist[0] != NULL && previous[0]->droplist[0]->data == target)
         {
             node* toRemove = previous[0]->droplist[0];
             for (int i = toRemove->droplist.size() - 1; i >= 0; i--)
@@ -155,8 +158,8 @@ namespace cs3505
                 previous[i]->droplist[i] = toRemove->droplist[i];
             }
             delete(toRemove);
+            this->size--;
         }
-        this->size--;
     }
     /*
         This helper function generates a previous vector in order to find the insertion or deletion point of a target string.
@@ -192,22 +195,21 @@ namespace cs3505
     /**
       * Prints each node with the values stored in its pointers
       */
-    /*void string_set::debug_output() const
-    {
-        node* current = head;
-        std::cout << "DATA" << '\t' <<"POINTS TO"<<std::endl;
-        while (current != NULL)
-        {
-            std::cout << current->data << '\t';
-            for (int i = 0; i < current->droplist.size(); i++)
-            {
-                if(current->droplist[i] != NULL)
-                    std::cout << current->droplist[i]->data << '\t';
-            }
-            std::cout << std::endl;
-            current = current->droplist[0];
-        }
-    }*/
-    // Additional public and private helper function definitions needed
+      void string_set::debug_output() const
+      {
+          node* current = head;
+          std::cout << "DATA" << '\t' <<"POINTS TO"<<std::endl;
+          while (current != NULL)
+          {
+              std::cout << current->data << '\t';
+              for (int i = 0; i < current->droplist.size(); i++)
+              {
+                  if(current->droplist[i] != NULL)
+                      std::cout << current->droplist[i]->data << '\t';
+              }
+              std::cout << std::endl;
+              current = current->droplist[0];
+          }
+      }
 
 }

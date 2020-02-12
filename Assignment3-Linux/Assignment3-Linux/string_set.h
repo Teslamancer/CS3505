@@ -7,8 +7,8 @@
  * O(lg size) on average.  The operator= and get_elements
  * functions are O(size).
  *
- * Peter Jensen
- * January 28, 2020
+ * Author: Hunter Schmidt
+ * February 10, 2020
  */
 
 #ifndef STRING_SET_H
@@ -49,13 +49,12 @@ namespace cs3505
         std::vector<std::string> get_elements();           // Returns all the elements in this string_set,
                                                            // in ascending order.
         //void debug_output() const;
-        //const int new_count() const;
-        //const int del_count() const;
+        //static int new_count();
+        //static int del_count();
 
     private:
         const std::vector<node*> generate_previous(const std::string& target) const;
-        
-        // You may add any private helper functions that you like.
+
 
 
     };

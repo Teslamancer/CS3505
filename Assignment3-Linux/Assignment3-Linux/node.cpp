@@ -1,12 +1,11 @@
 /* This node class is used to build linked lists for the
  * string_set class.
  *
- * Peter Jensen
- * January 28, 2020
+ * Author: Hunter Schmidt
+ * February 10, 2020
  */
 
 #include "node.h"
-
  // We're not in a namespace.  We are not in any class.  Symbols defined
  //   here are globally available.  We need to qualify our function names
  //   so that we are definining our cs3505::node class functions.
@@ -20,11 +19,11 @@
  /*******************************************************
   * node member function definitions
   ***************************************************** */
-//int cs3505::node::newCount = 0;
-//int cs3505::node::delCount = 0;
+  int cs3505::node::newCount = 0;
+  int cs3505::node::delCount = 0;
 
-  // Students will decide how to implement the constructor, destructor, and
-  //   any helper methods.
+    // Students will decide how to implement the constructor, destructor, and
+    //   any helper methods.
 cs3505::node::node(std::string s)
     :data(s)
 {
@@ -49,6 +48,7 @@ cs3505::node::~node()
     {
         this->droplist[i] = NULL;
     }
+    //std::cout << "Deleted here!" << std::endl;
     //delCount++;
 }
 
@@ -56,4 +56,3 @@ cs3505::node::~node()
 //{
 //    return this->data;
 //}
-
