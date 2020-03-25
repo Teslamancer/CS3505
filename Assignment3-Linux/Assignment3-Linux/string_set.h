@@ -26,6 +26,7 @@ namespace cs3505
         //  between functions with object variables - use parameters and return values.)
 
         int max_next_width;  // The maximum width of of a drop list in each node
+        bool ascending;
 
         node* head;          // The head of the list will sit in a sentinal node
                              // (without any data in it).  This sentinal node
@@ -35,7 +36,7 @@ namespace cs3505
         int size;            // The number of elements in the set
 
     public:
-        string_set(int max_next_width = 10);   // Constructor.  Notice the default parameter value.
+        string_set(int max_next_width = 10, bool ascending=true);   // Constructor.  Notice the default parameter value.
         string_set(const string_set& other);  // Copy constructor
         ~string_set();                         // Destructor
 

@@ -24,9 +24,10 @@ namespace cs3505
      /** Constructor:  The parameter indicates the maximum
        *   width of the next pointers in the drop list nodes.
        */
-    string_set::string_set(int max_next_width)
-        :max_next_width(max_next_width), head(new node()), size(0)
+    string_set::string_set(int max_next_width, bool ascending)
+        :max_next_width(max_next_width), head(new node()), size(0), ascending(ascending)
     {
+        
         for (int i = 0; i < max_next_width; i++)
         {
             head->droplist.push_back(NULL);
@@ -44,7 +45,7 @@ namespace cs3505
 
         for (int i = 0; i < max_next_width; i++)
         {
-            this->head->droplist.push_back(NULL);
+            this->head->droplist.push_back(NULL);, bool as
         }
         node* current = other.head->droplist[0];
         while (current != NULL)
@@ -54,7 +55,7 @@ namespace cs3505
         }
     }
 
-    int string_set::new_count()
+    /*int string_set::new_count()
     {
         return node::newCount;
     }
@@ -62,7 +63,7 @@ namespace cs3505
     int string_set::del_count()
     {
         return node::delCount;
-    }
+    }*/
     /** Destructor:  release any memory allocated
       *   for this object.
       */
@@ -195,7 +196,7 @@ namespace cs3505
     /**
       * Prints each node with the values stored in its pointers
       */
-      void string_set::debug_output() const
+     /* void string_set::debug_output() const
       {
           node* current = head;
           std::cout << "DATA" << '\t' <<"POINTS TO"<<std::endl;
@@ -210,6 +211,6 @@ namespace cs3505
               std::cout << std::endl;
               current = current->droplist[0];
           }
-      }
+      }*/
 
 }
