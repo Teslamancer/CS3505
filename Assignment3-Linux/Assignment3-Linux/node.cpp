@@ -19,8 +19,8 @@
  /*******************************************************
   * node member function definitions
   ***************************************************** */
-  int cs3505::node::newCount = 0;
-  int cs3505::node::delCount = 0;
+  /*int cs3505::node::newCount = 0;
+  int cs3505::node::delCount = 0;*/
 
     // Students will decide how to implement the constructor, destructor, and
     //   any helper methods.

@@ -45,7 +45,7 @@ namespace cs3505
 
         for (int i = 0; i < max_next_width; i++)
         {
-            this->head->droplist.push_back(NULL);, bool as
+            this->head->droplist.push_back(NULL);
         }
         node* current = other.head->droplist[0];
         while (current != NULL)
