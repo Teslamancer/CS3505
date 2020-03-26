@@ -6,6 +6,7 @@
  */
 
 #include "node.h"
+#include <iostream>
  // We're not in a namespace.  We are not in any class.  Symbols defined
  //   here are globally available.  We need to qualify our function names
  //   so that we are definining our cs3505::node class functions.
@@ -27,19 +28,19 @@
 cs3505::node::node(std::string s)
     :data(s)
 {
-    //newCount++;
+    newCount++;
 }
 
 cs3505::node::node(const node& other)
     : data(other.data), droplist(other.droplist)
 {
-    //newCount++;
+    newCount++;
 }
 
 cs3505::node::node()
     : data()
 {
-    //newCount++;
+    newCount++;
 }
 
 cs3505::node::~node()
@@ -49,7 +50,7 @@ cs3505::node::~node()
         this->droplist[i] = NULL;
     }
     //std::cout << "Deleted here!" << std::endl;
-    //delCount++;
+    delCount++;
 }
 
 //const std::string cs3505::node::get_data() const

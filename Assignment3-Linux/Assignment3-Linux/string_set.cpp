@@ -45,7 +45,7 @@ namespace cs3505
 
         for (int i = 0; i < max_next_width; i++)
         {
-            this->head->droplist.push_back(NULL);, bool as
+            this->head->droplist.push_back(NULL);
         }
         node* current = other.head->droplist[0];
         while (current != NULL)
@@ -55,7 +55,7 @@ namespace cs3505
         }
     }
 
-    /*int string_set::new_count()
+    int string_set::new_count()
     {
         return node::newCount;
     }
@@ -63,7 +63,7 @@ namespace cs3505
     int string_set::del_count()
     {
         return node::delCount;
-    }*/
+    }
     /** Destructor:  release any memory allocated
       *   for this object.
       */
@@ -140,10 +140,31 @@ namespace cs3505
     {
         if (this != &rhs)
         {
-            string_set toReturn(rhs);
-            return toReturn;
-
+            node* current = head;
+            node* next = head;
+            while (current != NULL)
+            {
+                //if(current->droplist[0] != NULL)
+                next = current->droplist[0];
+                delete (current);
+                current = next;
+            }
+            this->max_next_width = rhs.max_next_width;
+            //delete(this->head);
+            this->head = new node();
+            
+            for (int i = 0; i < max_next_width; i++)
+            {
+                this->head->droplist.push_back(NULL);
+            }
+            current = rhs.head->droplist[0];
+            while (current != NULL)
+            {
+                this->add(current->data);
+                current = current->droplist[0];
+            }            
         }
+        return *this;
     }
     /*
         This removes the target element from the set if it exists
@@ -182,7 +203,7 @@ namespace cs3505
                 return previous;
             }
 
-            if (current->droplist[i] == NULL || current->droplist[i]->data >= target)
+            if ((current->droplist.size() > i && current->droplist[i] == NULL) || current->droplist[i]->data >= target)
             {
                 previous[i] = current;
             }
@@ -196,7 +217,7 @@ namespace cs3505
     /**
       * Prints each node with the values stored in its pointers
       */
-     /* void string_set::debug_output() const
+      void string_set::debug_output() const
       {
           node* current = head;
           std::cout << "DATA" << '\t' <<"POINTS TO"<<std::endl;
@@ -211,6 +232,6 @@ namespace cs3505
               std::cout << std::endl;
               current = current->droplist[0];
           }
-      }*/
+      }
 
 }

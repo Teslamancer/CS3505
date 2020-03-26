@@ -49,9 +49,11 @@ namespace cs3505
 
         std::vector<std::string> get_elements();           // Returns all the elements in this string_set,
                                                            // in ascending order.
-        //void debug_output() const;
-        //static int new_count();
-        //static int del_count();
+
+
+        void debug_output() const;
+        static int new_count();
+        static int del_count();
 
     private:
         const std::vector<node*> generate_previous(const std::string& target) const;

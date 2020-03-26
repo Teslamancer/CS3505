@@ -14,11 +14,13 @@ using namespace std;
 int main()
 {
     {
-        cs3505::string_set set(100000);
+        cs3505::string_set set(10);
         set = set;
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 10; i++)
         {
-            set.add(""+i);
+            /*if (i == 9706)
+                cout << "here";*/
+            set.add(std::to_string(i));
         }
         //set.debug_output();
 
@@ -33,9 +35,9 @@ int main()
 
         cout << "Delete Count: " << set.del_count() << endl;
 
-        for (int i = 0; i < 100; i++)
+        /*for (int i = 0; i < 100; i++)
         {
-            set.add("" + i);
+            set.add(std::to_string(i));
         }
 
         cout << "Size: " << set.get_size() << endl;
@@ -46,7 +48,7 @@ int main()
 
         for (int i = 0; i < 10000; i+=2)
         {
-            set.remove("" + i);
+            set.remove(std::to_string(i));
         }
 
         cout << "Size: " << set.get_size() << endl;
@@ -57,16 +59,17 @@ int main()
 
     for (int i = 0; i < 10000; i += 2)
     {
-        set.remove("" + i);
+        set.remove(std::to_string(i));
     }
 
     cout << "Size: " << set.get_size() << endl;
 
     cout << "New Count: " << set.new_count() << endl;
 
-    cout << "Delete Count: " << set.del_count() << endl;
+    cout << "Delete Count: " << set.del_count() << endl;*/
 
-    cs3505::string_set copy = set;
+    cs3505::string_set copy;
+    copy = set;
 
     cout << "Size: " << copy.get_size() << endl;
 
@@ -74,6 +77,27 @@ int main()
 
     cout << "Delete Count: " << copy.del_count() << endl;
 
+    cs3505::string_set copy2;
+
+    copy2.add("a");
+    copy2.add("b");
+    copy2.add("c");
+
+    copy2 = set;
+
+    vector<string> elements = set.get_elements();
+    for (int i = 0; i < elements.size(); i++)
+    {
+        cout << elements[i] << ',';
+    }
+    cout << endl << endl;
+
+    elements = copy2.get_elements();
+    for (int i = 0; i < elements.size(); i++)
+    {
+        cout << elements[i] << ',';
+    }
+    cout << endl << endl;
 }
 {
     cs3505::string_set set1(10);
